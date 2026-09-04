@@ -1,26 +1,479 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #0b1a2e;
+  --paper: #f2ede6;
+  --vermilion: #d9291c;
+  --white: #fbfaf7;
+  --slate: #5a6472;
+  --hair: #e2dace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --step-display-xl: clamp(3rem, 11vw, 11rem);
+  --step-display-l: clamp(2.2rem, 6.5vw, 6rem);
+  --step-display-m: clamp(1.6rem, 3.2vw, 3rem);
+  --step-body: clamp(1rem, 1.15vw, 1.25rem);
+  --step-meta: 0.75rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-vermilion: var(--vermilion);
+  --color-white: var(--white);
+  --color-slate: var(--slate);
+  --color-hair: var(--hair);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: var(--ink);
+  color: var(--white);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--step-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.font-body {
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.text-display-xl {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--step-display-xl);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.text-display-l {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--step-display-l);
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+.text-display-m {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--step-display-m);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+
+.text-meta {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--step-meta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--vermilion);
+  outline-offset: 3px;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+@keyframes ok-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.ok-marquee {
+  animation: ok-marquee 42s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ok-marquee {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Selected Works — pinned horizontal index (§4 signature)
+   Baseline (mobile / reduced motion) is a native scroll-snap swipe rail.
+   The pinned GSAP variant only switches on at >760px with motion allowed.
+--------------------------------------------------------------------------- */
+
+.works-stage {
+  padding-top: 16vh;
+  padding-bottom: 16vh;
+}
+
+.works-viewport {
+  margin-top: 6vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 5vw;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+.works-track {
+  width: max-content;
+  padding: 0 5vw 4px;
+  gap: 1.5rem;
+}
+
+.works-card {
+  flex: 0 0 auto;
+  width: min(78vw, 560px);
+  scroll-snap-align: start;
+}
+
+/* Rail card names sit smaller than a section statement — a 480px card does
+   not want a 48px display size. */
+.works-title {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.35rem, 2.1vw, 2rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+}
+
+.works-frame,
+.works-panel {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: rgba(251, 250, 247, 0.04);
+}
+
+.works-panel {
+  background: transparent;
+  border: 1px solid rgba(251, 250, 247, 0.18);
+}
+
+@media (min-width: 761px) {
+  .works-viewport {
+    scroll-padding-left: 6vw;
+  }
+  .works-track {
+    padding-left: 6vw;
+    padding-right: 6vw;
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  .works-stage {
+    height: 100svh;
+    /* clears the fixed nav; justify-center then balances the rest */
+    padding-top: 7svh;
+    padding-bottom: 2svh;
+  }
+  .works-viewport {
+    margin-top: 5svh;
+    overflow: hidden;
+    scroll-snap-type: none;
+  }
+  .works-card {
+    width: clamp(300px, 40svh, 460px);
+    scroll-snap-align: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Projects gallery (§6) — editorial asymmetric grid on paper, ink lightbox.
+   Spans, not uniform cards: hero tiles take half the 6-col field, gallery
+   tiles a third, and dense flow closes the holes that mixed spans leave.
+--------------------------------------------------------------------------- */
+
+.ok-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 1.5rem;
+  row-gap: 3.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 700px) {
+  .ok-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-flow: dense;
+    column-gap: 2rem;
+    row-gap: 6rem;
+  }
+  .ok-tile {
+    grid-column: span 2;
+  }
+  .ok-tile-hero {
+    grid-column: span 3;
+  }
+  /* Deliberate asymmetry: drop every fourth tile out of its row's top line. */
+  .ok-tile:nth-of-type(4n + 3) {
+    margin-top: 4rem;
+  }
+}
+
+.ok-tile-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+}
+
+.ok-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: rgba(11, 26, 46, 0.06);
+}
+
+.ok-tile-hero .ok-frame {
+  aspect-ratio: 4 / 3;
+}
+
+.ok-frame img {
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.ok-tile-btn:hover .ok-frame img,
+.ok-tile-btn:focus-visible .ok-frame img {
+  transform: scale(1.03);
+}
+
+.ok-name {
+  display: inline-block;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.15rem, 1.7vw, 1.55rem);
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+}
+
+.ok-tile-hero .ok-name {
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+}
+
+.ok-rule {
+  display: block;
+  height: 1px;
+  margin-top: 0.35rem;
+  background: var(--vermilion);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.ok-tile-btn:hover .ok-rule,
+.ok-tile-btn:focus-visible .ok-rule {
+  transform: scaleX(1);
+}
+
+.ok-meta-shift {
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.ok-tile-btn:hover .ok-meta-shift,
+.ok-tile-btn:focus-visible .ok-meta-shift {
+  transform: translateY(-2px);
+}
+
+.ok-filter {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: rgba(251, 250, 247, 0.5);
+  transition: color 0.3s var(--ease-inout);
+  white-space: nowrap;
+}
+
+.ok-filter:hover {
+  color: rgba(251, 250, 247, 0.85);
+}
+
+.ok-filter[aria-pressed="true"] {
+  color: var(--vermilion);
+}
+
+.ok-lightbox-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 74svh;
+}
+
+/* Safe centring: short projects sit centred, tall ones still scroll from the
+   top rather than losing their head off the edge. */
+.ok-lightbox-body {
+  justify-content: safe center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ok-frame img,
+  .ok-rule,
+  .ok-meta-shift,
+  .ok-filter {
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Shared page furniture (§5) — the line mask, the clip frame, the drawn
+   underline and the underline-only form fields used by About / Services /
+   Contact.
+--------------------------------------------------------------------------- */
+
+.ok-mask-line {
+  display: block;
+  overflow: hidden;
+  /* Descenders and italic tails would be shaved off by the mask otherwise. */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.ok-clip {
+  position: relative;
+  overflow: hidden;
+  background: rgba(11, 26, 46, 0.06);
+}
+
+.ok-clip-ink {
+  background: rgba(251, 250, 247, 0.05);
+}
+
+/* Link underline that draws left to right (§5 hover rule). */
+.ok-ul {
+  position: relative;
+  display: inline-block;
+}
+
+.ok-ul::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.16em;
+  width: 100%;
+  height: 1px;
+  background: var(--vermilion);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.ok-ul:hover::after,
+.ok-ul:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Legacy strip: present, quieter than the modern renders. */
+.ok-legacy .ok-clip {
+  opacity: 0.72;
+  transition: opacity 0.5s var(--ease-inout);
+}
+
+.ok-legacy a:hover .ok-clip,
+.ok-legacy a:focus-visible .ok-clip {
+  opacity: 1;
+}
+
+/* Underline-only fields: no boxes, no fills. */
+.ok-field {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--hair);
+  border-radius: 0;
+  padding: 0.65rem 0 0.7rem;
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--step-body);
+  line-height: 1.5;
+  transition:
+    border-color 0.35s var(--ease-inout),
+    box-shadow 0.35s var(--ease-inout);
+}
+
+.ok-field::placeholder {
+  color: var(--slate);
+  opacity: 0.55;
+}
+
+/* The focus state is the underline itself: vermilion, and doubled in weight
+   by the shadow so it reads without shifting the layout by a pixel. */
+.ok-field:focus {
+  outline: none;
+  border-bottom-color: var(--vermilion);
+  box-shadow: 0 1px 0 var(--vermilion);
+}
+
+.ok-field:disabled {
+  opacity: 0.55;
+}
+
+.ok-send {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ok-ul::after,
+  .ok-legacy .ok-clip,
+  .ok-field {
+    transition: none;
+  }
 }

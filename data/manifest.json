@@ -1,0 +1,708 @@
+[
+  {
+    "id": "p01",
+    "title": "Residential High-Rise Building",
+    "type": "Residential High-Rise",
+    "category": "Residential High-Rise",
+    "location": "Ikoyi, Lagos",
+    "date": "July 2022",
+    "year": 2022,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p01_a.webp",
+      "p01_b.webp"
+    ]
+  },
+  {
+    "id": "p02",
+    "title": "Residential High-Rise Development",
+    "type": "Residential High-Rise",
+    "category": "Residential High-Rise",
+    "location": "Ikoyi, Lagos",
+    "date": "December 2024",
+    "year": 2024,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p02_a.webp",
+      "p02_b.webp"
+    ]
+  },
+  {
+    "id": "p03",
+    "title": "Mixed-Use Development",
+    "type": "Mixed-Use Development",
+    "category": "Mixed-Use",
+    "location": "Victoria Island, Lagos",
+    "date": "May 2026",
+    "year": 2026,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p03_a.webp"
+    ]
+  },
+  {
+    "id": "p04",
+    "title": "Mixed-Use Development",
+    "type": "Mixed-Use Development",
+    "category": "Mixed-Use",
+    "location": "Parkview, Ikoyi, Lagos",
+    "date": "June 2026",
+    "year": 2026,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p04_a.webp",
+      "p04_b.webp"
+    ]
+  },
+  {
+    "id": "p05",
+    "title": "Multi-Residential Development",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Ikoyi, Lagos",
+    "date": "August 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p05_a.webp"
+    ]
+  },
+  {
+    "id": "p06",
+    "title": "Multi-Residential Development",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Victoria Island, Lagos",
+    "date": "November 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p06_a.webp"
+    ]
+  },
+  {
+    "id": "p07",
+    "title": "Multi-Residential Development",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Ikoyi, Lagos",
+    "date": "April 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p07_a.webp"
+    ]
+  },
+  {
+    "id": "p08",
+    "title": "Multi-Residential Development",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Eti-Osa, Lagos",
+    "date": "December 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p08_a.webp"
+    ]
+  },
+  {
+    "id": "p09",
+    "title": "Multi-Residential Development",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Parkview, Ikoyi, Lagos",
+    "date": "November 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p09_a.webp"
+    ]
+  },
+  {
+    "id": "p10",
+    "title": "Multi-Residential Development",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Osborne, Ikoyi, Lagos",
+    "date": "January 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p10_a.webp"
+    ]
+  },
+  {
+    "id": "p11",
+    "title": "Multi-Residential Development",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Banana Island, Ikoyi, Lagos",
+    "date": "April 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p11_a.webp"
+    ]
+  },
+  {
+    "id": "p12",
+    "title": "Multi-Residential Development (Aquila)",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Lekki Scheme 1, Lagos",
+    "date": "September 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p12_a.webp"
+    ]
+  },
+  {
+    "id": "p13",
+    "title": "Residential High-Rise Development",
+    "type": "Residential High-Rise",
+    "category": "Residential High-Rise",
+    "location": "Victoria Island, Lagos",
+    "date": "May 2024",
+    "year": 2024,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p13_a.webp",
+      "p13_b.webp"
+    ]
+  },
+  {
+    "id": "p14",
+    "title": "Residential High-Rise Development",
+    "type": "Residential High-Rise",
+    "category": "Residential High-Rise",
+    "location": "Ikoyi, Lagos",
+    "date": "June 2023",
+    "year": 2023,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p14_a.webp"
+    ]
+  },
+  {
+    "id": "p15",
+    "title": "Residential High-Rise Development",
+    "type": "Residential High-Rise",
+    "category": "Residential High-Rise",
+    "location": "Parkview, Ikoyi, Lagos",
+    "date": "August 2024",
+    "year": 2024,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p15_a.webp"
+    ]
+  },
+  {
+    "id": "p16",
+    "title": "High-Rise Residential Development",
+    "type": "Residential High-Rise",
+    "category": "Residential High-Rise",
+    "location": "Lekki Free Trade Zone, Lagos",
+    "date": "February 2017",
+    "year": 2017,
+    "legacy": true,
+    "tier": "gallery",
+    "images": [
+      "p16_a.webp"
+    ]
+  },
+  {
+    "id": "p17",
+    "title": "Mixed-Use Development",
+    "type": "Mixed-Use Development",
+    "category": "Mixed-Use",
+    "location": "Victoria Island, Lagos",
+    "date": "April 2026",
+    "year": 2026,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p17_a.webp"
+    ]
+  },
+  {
+    "id": "p18",
+    "title": "Neo-Classical Residential Villa",
+    "type": "Private Residence",
+    "category": "Private Residence",
+    "location": "Owerri, Imo State",
+    "date": "October 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p18_a.webp"
+    ]
+  },
+  {
+    "id": "p19",
+    "title": "Terrace Housing",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Eti-Osa, Lagos",
+    "date": "February 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p19_a.webp"
+    ]
+  },
+  {
+    "id": "p20",
+    "title": "Private Waterfront Residence",
+    "type": "Private Residence",
+    "category": "Private Residence",
+    "location": "VGC, Lagos",
+    "date": "August 2022",
+    "year": 2022,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p20_a.webp"
+    ]
+  },
+  {
+    "id": "p21",
+    "title": "Private Waterfront Residence",
+    "type": "Private Residence",
+    "category": "Private Residence",
+    "location": "Ikorodu, Lagos",
+    "date": "September 2022",
+    "year": 2022,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p21_a.webp"
+    ]
+  },
+  {
+    "id": "p22",
+    "title": "Terrace Housing Development",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Lekki Foreshore, Lagos",
+    "date": "December 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p22_a.webp"
+    ]
+  },
+  {
+    "id": "p23",
+    "title": "Private Residential Development",
+    "type": "Private Residence",
+    "category": "Private Residence",
+    "location": "Ikoyi, Lagos",
+    "date": "November 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p23_a.webp"
+    ]
+  },
+  {
+    "id": "p24",
+    "title": "Semi-Detached Development",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Eti-Osa, Lagos",
+    "date": "June 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p24_a.webp"
+    ]
+  },
+  {
+    "id": "p25",
+    "title": "Terrace Housing",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Eti-Osa, Lagos",
+    "date": "March 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p25_a.webp"
+    ]
+  },
+  {
+    "id": "p26",
+    "title": "Semi-Detached Development",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Lekki Foreshore, Lagos",
+    "date": "July 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p26_a.webp"
+    ]
+  },
+  {
+    "id": "p27",
+    "title": "Semi-Detached Residential (Siamese)",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Lekki County Homes, Lagos",
+    "date": "October 2017",
+    "year": 2017,
+    "legacy": true,
+    "tier": "gallery",
+    "images": [
+      "p27_a.webp"
+    ]
+  },
+  {
+    "id": "p28",
+    "title": "Gated Estate Development",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "Ibadan, Oyo State",
+    "date": "July 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p28_a.webp"
+    ]
+  },
+  {
+    "id": "p29",
+    "title": "Residential Terrace Housing",
+    "type": "Multi-Residential",
+    "category": "Multi-Residential",
+    "location": "VGC, Lagos",
+    "date": "May 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p29_a.webp"
+    ]
+  },
+  {
+    "id": "p30",
+    "title": "Private Boutique Hotel",
+    "type": "Hospitality",
+    "category": "Commercial & Civic",
+    "location": "Ikoyi, Lagos",
+    "date": "February 2026",
+    "year": 2026,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p30_a.webp"
+    ]
+  },
+  {
+    "id": "p31",
+    "title": "Residential Interior Design",
+    "type": "Interior Design",
+    "category": "Interiors",
+    "location": "Eti-Osa, Lagos",
+    "date": "January 2026",
+    "year": 2026,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p31_a.webp",
+      "p32_a.webp"
+    ]
+  },
+  {
+    "id": "p33",
+    "title": "Residential Interior Design",
+    "type": "Interior Design",
+    "category": "Interiors",
+    "location": "F.C.T. Abuja",
+    "date": "January 2026",
+    "year": 2026,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p33_a.webp"
+    ]
+  },
+  {
+    "id": "p34",
+    "title": "Interior Design",
+    "type": "Interior Design",
+    "category": "Interiors",
+    "location": "Lekki Scheme 1, Lagos",
+    "date": "December 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p34_a.webp",
+      "p35_a.webp"
+    ]
+  },
+  {
+    "id": "p36",
+    "title": "Executive Lounge",
+    "type": "Interior Design",
+    "category": "Interiors",
+    "location": "Ikeja, Lagos",
+    "date": "July 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p36_a.webp"
+    ]
+  },
+  {
+    "id": "p37",
+    "title": "Pentecostal Church HQ",
+    "type": "Religious",
+    "category": "Commercial & Civic",
+    "location": "Lagos",
+    "date": "January 2024",
+    "year": 2024,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p37_a.webp"
+    ]
+  },
+  {
+    "id": "p38",
+    "title": "Masjid Design",
+    "type": "Religious",
+    "category": "Commercial & Civic",
+    "location": "Muscat, Oman",
+    "date": "January 2026",
+    "year": 2026,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p38_a.webp"
+    ]
+  },
+  {
+    "id": "p39",
+    "title": "Boutique Hotel Design",
+    "type": "Hospitality",
+    "category": "Commercial & Civic",
+    "location": "Port Harcourt",
+    "date": "September 2024",
+    "year": 2024,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p39_a.webp"
+    ]
+  },
+  {
+    "id": "p40",
+    "title": "Boutique Hotel Design",
+    "type": "Hospitality",
+    "category": "Commercial & Civic",
+    "location": "Lagos",
+    "date": "June 2023",
+    "year": 2023,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p40_a.webp"
+    ]
+  },
+  {
+    "id": "p41",
+    "title": "Innovation Hub",
+    "type": "Institutional",
+    "category": "Commercial & Civic",
+    "location": "Enugu, Enugu State",
+    "date": "March 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p41_a.webp"
+    ]
+  },
+  {
+    "id": "p42",
+    "title": "Office Development",
+    "type": "Commercial Office",
+    "category": "Commercial & Civic",
+    "location": "F.C.T. Abuja",
+    "date": "April 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "gallery",
+    "images": [
+      "p42_b.webp"
+    ]
+  },
+  {
+    "id": "p43",
+    "title": "Office Building",
+    "type": "Commercial Office",
+    "category": "Commercial & Civic",
+    "location": "Lekki, Lagos",
+    "date": "March 2026",
+    "year": 2026,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p43_a.webp"
+    ]
+  },
+  {
+    "id": "p44",
+    "title": "1500-Capacity Multipurpose Event Hall",
+    "type": "Institutional",
+    "category": "Commercial & Civic",
+    "location": "Abuja",
+    "date": "October 2022",
+    "year": 2022,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p44_a.webp"
+    ]
+  },
+  {
+    "id": "p45",
+    "title": "Commercial Development",
+    "type": "Commercial",
+    "category": "Commercial & Civic",
+    "location": "Lekki Scheme 1, Lagos",
+    "date": "November 2016",
+    "year": 2016,
+    "legacy": true,
+    "tier": "hero",
+    "images": [
+      "p45_a.webp"
+    ]
+  },
+  {
+    "id": "p46",
+    "title": "Commercial Bank (Providus)",
+    "type": "Commercial",
+    "category": "Commercial & Civic",
+    "location": "Allen Avenue, Ikeja",
+    "date": "December 2017",
+    "year": 2017,
+    "legacy": true,
+    "tier": "gallery",
+    "images": [
+      "p46_a.webp"
+    ]
+  },
+  {
+    "id": "p47",
+    "title": "Phil's Fast Food & Bar",
+    "type": "Commercial",
+    "category": "Commercial & Civic",
+    "location": "UNILAG, Lagos",
+    "date": "January 2016",
+    "year": 2016,
+    "legacy": true,
+    "tier": "hero",
+    "images": [
+      "p47_a.webp"
+    ]
+  },
+  {
+    "id": "p48",
+    "title": "Commercial Bank",
+    "type": "Commercial",
+    "category": "Commercial & Civic",
+    "location": "Bode Thomas, Surulere",
+    "date": "March 2016",
+    "year": 2016,
+    "legacy": true,
+    "tier": "gallery",
+    "images": [
+      "p48_a.webp"
+    ]
+  },
+  {
+    "id": "p49",
+    "title": "Soccer Stadium",
+    "type": "Recreational",
+    "category": "Recreational",
+    "location": "Eti-Osa, Lagos",
+    "date": "December 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p49_a.webp"
+    ]
+  },
+  {
+    "id": "p50",
+    "title": "Gymnasium & Sporting Arena",
+    "type": "Recreational",
+    "category": "Recreational",
+    "location": "Victoria Island, Lagos",
+    "date": "October 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p50_a.webp"
+    ]
+  },
+  {
+    "id": "p51",
+    "title": "Sporting & Wellness Facility",
+    "type": "Recreational",
+    "category": "Recreational",
+    "location": "Eko Atlantic, Lagos",
+    "date": "June 2025",
+    "year": 2025,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p51_a.webp"
+    ]
+  },
+  {
+    "id": "p52",
+    "title": "Sporting Facility",
+    "type": "Recreational",
+    "category": "Recreational",
+    "location": "Muscat, Oman",
+    "date": "March 2026",
+    "year": 2026,
+    "legacy": false,
+    "tier": "hero",
+    "images": [
+      "p52_a.webp"
+    ]
+  }
+]
