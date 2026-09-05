@@ -27,9 +27,38 @@ const switzer = localFont({
   ],
 });
 
+const SITE_URL = "https://oxbridgeknights.com";
+const TITLE = "Oxbridge Knights · Architecture, Real Estate & Construction";
+const DESCRIPTION =
+  "Oxbridge Knights designs, develops and builds across Lagos and London: " +
+  "architecture, real estate and construction under one roof. Old name. New rules.";
+
 export const metadata: Metadata = {
-  title: "Oxbridge Knights",
-  description: "Old name. New rules.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Oxbridge Knights",
+    url: SITE_URL,
+    title: TITLE,
+    description: DESCRIPTION,
+    locale: "en_GB",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "An Oxbridge Knights residential tower lit at dusk.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og.jpg"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
