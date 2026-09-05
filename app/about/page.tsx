@@ -3,6 +3,7 @@ import Link from "next/link";
 import manifest from "@/data/manifest.json";
 import LineMask from "../components/LineMask";
 import ClipReveal from "../components/ClipReveal";
+import Asterisk from "../components/Asterisk";
 
 type Project = {
   id: string;
@@ -179,11 +180,7 @@ export default function AboutPage() {
             ·
           </span>
           <span>
-            Lagos{" "}
-            <span aria-hidden style={{ color: "var(--vermilion)" }}>
-              ✳
-            </span>{" "}
-            London
+            Lagos <Asterisk /> London
           </span>
         </div>
       </section>

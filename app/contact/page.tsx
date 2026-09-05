@@ -1,5 +1,6 @@
 import LineMask from "../components/LineMask";
 import ContactForm from "./ContactForm";
+import Asterisk from "../components/Asterisk";
 
 const details: { label: string; value: string; href?: string; ext?: boolean }[] =
   [
@@ -114,11 +115,7 @@ export default function ContactPage() {
             </ul>
 
             <p className="mt-10 text-meta" style={{ color: "var(--slate)" }}>
-              Lagos{" "}
-              <span aria-hidden style={{ color: "var(--vermilion)" }}>
-                ✳
-              </span>{" "}
-              London / Since 2016
+              Lagos <Asterisk /> London / Since 2016
             </p>
           </div>
         </div>

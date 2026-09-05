@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
+import Asterisk from "../components/Asterisk";
 
 const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 const ENDPOINT = "https://api.web3forms.com/submit";
@@ -78,12 +79,7 @@ export default function ContactForm() {
             style={{ color: "var(--slate)" }}
           >
             {f.label}
-            {f.required ? (
-              <span aria-hidden style={{ color: "var(--vermilion)" }}>
-                {" "}
-                ✳
-              </span>
-            ) : null}
+            {f.required ? <Asterisk style={{ marginLeft: "0.3em" }} /> : null}
           </label>
           <input
             id={`contact-${f.name}`}
@@ -110,10 +106,7 @@ export default function ContactForm() {
           style={{ color: "var(--slate)" }}
         >
           Message
-          <span aria-hidden style={{ color: "var(--vermilion)" }}>
-            {" "}
-            ✳
-          </span>
+          <Asterisk style={{ marginLeft: "0.3em" }} />
         </label>
         <textarea
           id="contact-message"
@@ -139,9 +132,13 @@ export default function ContactForm() {
           }}
         >
           {status === "sending" ? "Sending" : status === "sent" ? "Sent" : "Send"}{" "}
-          <span aria-hidden style={{ color: "var(--vermilion)" }}>
-            {status === "sent" ? "✳" : "→"}
-          </span>
+          {status === "sent" ? (
+            <Asterisk size="0.8em" />
+          ) : (
+            <span aria-hidden style={{ color: "var(--vermilion)" }}>
+              →
+            </span>
+          )}
         </button>
 
         {/* Body type, not meta: tracked uppercase is for labels, not sentences. */}

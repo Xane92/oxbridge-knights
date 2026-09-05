@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import manifest from "@/data/manifest.json";
 import SelectedWorks from "./components/SelectedWorks";
+import Asterisk from "./components/Asterisk";
 
 type Project = {
   id: string;
@@ -238,17 +239,7 @@ function Marquee() {
       {marqueeItems.map((w, i) => (
         <span key={`w-${i}`}>
           {w}
-          <span
-            aria-hidden
-            style={{
-              color: "var(--vermilion)",
-              margin: "0 0.4em",
-              display: "inline-block",
-              fontStyle: "normal",
-            }}
-          >
-            ✳
-          </span>
+          <Asterisk style={{ margin: "0 0.4em" }} />
         </span>
       ))}
     </span>
