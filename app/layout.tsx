@@ -5,6 +5,7 @@ import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import Cursor from "./components/Cursor";
 import Nav from "./components/Nav";
+import Loader from "./components/Loader";
 import Footer from "./components/Footer";
 
 const fraunces = Fraunces({
@@ -38,6 +39,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${switzer.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* Runs before hydration: marks the document when the loader has
+            already played this session, so CSS can suppress the panel before
+            the first paint. Only ever sets a data attribute, so React has
+            nothing to disagree with. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(sessionStorage.getItem(\"ok:loader-seen\")===\"1\")" +
+              "document.documentElement.setAttribute(\"data-ok-loaded\",\"1\")}catch(e){}",
+          }}
+        />
+        <Loader />
         <SmoothScroll />
         <Cursor />
         <Nav />

@@ -477,3 +477,76 @@ html.lenis body {
     transition: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Loader to hero (§5). The panel is rendered on the server, so it must be
+   visible by default and hidden only by state or by the pre-paint attribute
+   below. Never hidden by a render-time storage read.
+--------------------------------------------------------------------------- */
+
+.ok-loader {
+  position: fixed;
+  inset: 0;
+  /* Above the nav (50) and the lightbox (90), below the cursor (100). */
+  z-index: 95;
+  background: var(--ink);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vw;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1s var(--ease-inout);
+}
+
+.ok-loader-lift {
+  clip-path: inset(100% 0 0 0);
+}
+
+.ok-loader-inner {
+  text-align: center;
+  transition:
+    transform 1s var(--ease-inout),
+    opacity 0.8s var(--ease-inout);
+}
+
+.ok-loader-lift .ok-loader-inner {
+  transform: translateY(-12%);
+  opacity: 0;
+}
+
+.ok-loader-mark {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.ok-loader-meta {
+  margin-top: 1.6rem;
+  color: rgba(251, 250, 247, 0.7);
+}
+
+.ok-loader-sub {
+  margin-top: 0.7rem;
+  color: rgba(251, 250, 247, 0.45);
+}
+
+.ok-loader-count {
+  position: absolute;
+  right: 5vw;
+  bottom: 5vw;
+  color: rgba(251, 250, 247, 0.7);
+}
+
+/* Set before hydration by the inline script in the layout, so a return visit
+   inside the same session never flashes the panel between paint and effect. */
+html[data-ok-loaded] .ok-loader {
+  display: none;
+}
+
+/* §5: reduced motion drops the loader curtain entirely. */
+@media (prefers-reduced-motion: reduce) {
+  .ok-loader {
+    display: none;
+  }
+}

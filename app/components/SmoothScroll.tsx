@@ -34,6 +34,9 @@ export default function SmoothScroll() {
 
     // Overlays (the projects lightbox) park the page rather than fighting it:
     // Lenis owns the scroll position, so only Lenis can freeze it.
+    const onLoaderDone = () => ScrollTrigger.refresh();
+    window.addEventListener("ok:loader-done", onLoaderDone);
+
     const onLock = () => lenis.stop();
     const onUnlock = () => lenis.start();
     window.addEventListener("ok:scroll-lock", onLock);
@@ -41,6 +44,7 @@ export default function SmoothScroll() {
 
     return () => {
       window.removeEventListener("ok:scroll-top", onScrollTop);
+      window.removeEventListener("ok:loader-done", onLoaderDone);
       window.removeEventListener("ok:scroll-lock", onLock);
       window.removeEventListener("ok:scroll-unlock", onUnlock);
       gsap.ticker.remove(raf);
