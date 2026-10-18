@@ -462,6 +462,54 @@ html.lenis body {
   opacity: 0.55;
 }
 
+/* Same underline-only field, inverted for the ink surface (admin login). */
+.ok-field-invert {
+  color: var(--white);
+  border-bottom-color: rgba(251, 250, 247, 0.28);
+}
+
+.ok-field-invert::placeholder {
+  color: rgba(251, 250, 247, 0.4);
+}
+
+.ok-field-invert:focus {
+  border-bottom-color: var(--vermilion);
+  box-shadow: 0 1px 0 var(--vermilion);
+}
+
+/* ---------------------------------------------------------------------------
+   Admin tool (Phase B7). Plain, legible controls on the paper surface. No
+   motion flourishes: this is a tool, not a showpiece.
+--------------------------------------------------------------------------- */
+
+.ok-admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--ease-inout),
+    color 0.25s var(--ease-inout);
+}
+
+.ok-admin-btn:hover:not(:disabled),
+.ok-admin-btn:focus-visible:not(:disabled) {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.ok-admin-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 .ok-send {
   background: none;
   border: 0;

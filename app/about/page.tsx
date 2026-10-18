@@ -1,30 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import manifest from "@/data/manifest.json";
+import { getProjects } from "@/lib/projects";
+import { resolveImage } from "@/lib/images";
 import LineMask from "../components/LineMask";
 import ClipReveal from "../components/ClipReveal";
 import Asterisk from "../components/Asterisk";
-
-type Project = {
-  id: string;
-  title: string;
-  type: string;
-  category: string;
-  location: string;
-  date: string;
-  year: number;
-  legacy: boolean;
-  tier: "hero" | "gallery";
-  images: string[];
-};
-
-const projects = manifest as Project[];
-const modernCount = projects.filter((p) => !p.legacy).length;
-
-/** The one place the early work appears: proof of track record, kept quiet. */
-const legacy = projects
-  .filter((p) => p.legacy)
-  .sort((a, b) => a.year - b.year || a.id.localeCompare(b.id));
 
 const values: { name: string; line: string }[] = [
   {
@@ -41,7 +21,15 @@ const values: { name: string; line: string }[] = [
   },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const projects = await getProjects();
+  const modernCount = projects.filter((p) => !p.legacy).length;
+
+  // The one place the early work appears: proof of track record, kept quiet.
+  const legacy = projects
+    .filter((p) => p.legacy)
+    .sort((a, b) => a.year - b.year || a.id.localeCompare(b.id));
+
   return (
     <>
       <section
@@ -220,14 +208,16 @@ export default function AboutPage() {
                 className="block"
               >
                 <ClipReveal style={{ aspectRatio: "4 / 3" }}>
-                  <Image
-                    src={`/library/${p.images[0]}`}
-                    alt={`${p.title}, ${p.location}`}
-                    fill
-                    sizes="(min-width: 1024px) 16vw, (min-width: 700px) 30vw, 44vw"
-                    loading="lazy"
-                    style={{ objectFit: "cover" }}
-                  />
+                  {p.images[0] ? (
+                    <Image
+                      src={resolveImage(p.images[0])}
+                      alt={`${p.title}, ${p.location}`}
+                      fill
+                      sizes="(min-width: 1024px) 16vw, (min-width: 700px) 30vw, 44vw"
+                      loading="lazy"
+                      style={{ objectFit: "cover" }}
+                    />
+                  ) : null}
                 </ClipReveal>
 
                 <div

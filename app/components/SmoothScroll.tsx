@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,7 +9,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScroll() {
+  // No smooth-scroll hijacking inside the admin tool.
+  const isAdmin = usePathname().startsWith("/admin");
+
   useEffect(() => {
+    if (isAdmin) return;
     const reduced =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -52,7 +57,7 @@ export default function SmoothScroll() {
       lenis.off("scroll", ScrollTrigger.update);
       lenis.destroy();
     };
-  }, []);
+  }, [isAdmin]);
 
   return null;
 }

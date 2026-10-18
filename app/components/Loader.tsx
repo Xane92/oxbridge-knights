@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export const SEEN_KEY = "ok:loader-seen";
 
@@ -22,9 +23,11 @@ export default function Loader() {
   const [count, setCount] = useState(0);
   const [lifting, setLifting] = useState(false);
   const [done, setDone] = useState(false);
+  // The admin area is a tool, not the site: no intro curtain there.
+  const isAdmin = usePathname().startsWith("/admin");
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || isAdmin) return;
 
     let seen = false;
     try {
@@ -95,9 +98,9 @@ export default function Loader() {
       window.clearTimeout(timer);
       release();
     };
-  }, []);
+  }, [isAdmin]);
 
-  if (done) return null;
+  if (done || isAdmin) return null;
 
   return (
     <div className={`ok-loader${lifting ? " ok-loader-lift" : ""}`} aria-hidden>

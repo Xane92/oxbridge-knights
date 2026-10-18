@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 type CursorMode = "idle" | "view" | "drag" | "close";
 
@@ -9,9 +10,11 @@ export default function Cursor() {
   const [mode, setMode] = useState<CursorMode>("idle");
   const [label, setLabel] = useState<string>("");
   const [enabled, setEnabled] = useState<boolean>(false);
+  // The custom cursor hides the native pointer; keep it off the admin tool.
+  const isAdmin = usePathname().startsWith("/admin");
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || isAdmin) return;
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!fine || reduced) return;
@@ -88,9 +91,9 @@ export default function Cursor() {
       document.removeEventListener("mouseout", onOut);
       document.documentElement.classList.remove("has-custom-cursor");
     };
-  }, []);
+  }, [isAdmin]);
 
-  if (!enabled) return null;
+  if (!enabled || isAdmin) return null;
 
   return (
     <div

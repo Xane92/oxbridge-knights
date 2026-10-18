@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { resolveImage } from "@/lib/images";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -143,14 +144,16 @@ export default function SelectedWorks({
                       data-work-media
                       style={{ willChange: "transform" }}
                     >
-                      <Image
-                        src={`/library/${p.images[0]}`}
-                        alt={`${p.title}, ${p.location}`}
-                        fill
-                        sizes="(min-width: 761px) 480px, 78vw"
-                        style={{ objectFit: "cover" }}
-                        priority={i < 2}
-                      />
+                      {p.images[0] ? (
+                        <Image
+                          src={resolveImage(p.images[0])}
+                          alt={`${p.title}, ${p.location}`}
+                          fill
+                          sizes="(min-width: 761px) 480px, 78vw"
+                          style={{ objectFit: "cover" }}
+                          priority={i < 2}
+                        />
+                      ) : null}
                     </div>
                   </div>
                   <div className="mt-5 flex items-baseline justify-between gap-4">

@@ -1,85 +1,73 @@
 import Image from "next/image";
 import Link from "next/link";
-import manifest from "@/data/manifest.json";
+import { getProjects, type Project } from "@/lib/projects";
+import { resolveImage } from "@/lib/images";
 import LineMask from "../components/LineMask";
 import ClipReveal from "../components/ClipReveal";
 
-type Project = {
-  id: string;
-  title: string;
-  type: string;
-  category: string;
-  location: string;
-  date: string;
-  year: number;
-  legacy: boolean;
-  tier: "hero" | "gallery";
-  images: string[];
-};
+export default async function ServicesPage() {
+  const modern = (await getProjects()).filter((p) => !p.legacy);
 
-const modern = (manifest as Project[]).filter((p) => !p.legacy);
+  /**
+   * Renders are pulled by category, sharpest first (hero tier, then newest),
+   * and never reused across two services.
+   */
+  const claimed = new Set<string>();
 
-/**
- * Renders are pulled from the manifest by category, sharpest first (hero tier,
- * then newest), and never reused across two services.
- */
-const claimed = new Set<string>();
+  function pick(categories: string[], count: number): Project[] {
+    const ranked = modern
+      .filter((p) => categories.includes(p.category) && !claimed.has(p.id))
+      .sort(
+        (a, b) =>
+          categories.indexOf(a.category) - categories.indexOf(b.category) ||
+          Number(b.tier === "hero") - Number(a.tier === "hero") ||
+          b.year - a.year ||
+          a.id.localeCompare(b.id),
+      )
+      .slice(0, count);
 
-function pick(categories: string[], count: number): Project[] {
-  const ranked = modern
-    .filter((p) => categories.includes(p.category) && !claimed.has(p.id))
-    .sort(
-      (a, b) =>
-        categories.indexOf(a.category) - categories.indexOf(b.category) ||
-        Number(b.tier === "hero") - Number(a.tier === "hero") ||
-        b.year - a.year ||
-        a.id.localeCompare(b.id),
-    )
-    .slice(0, count);
+    ranked.forEach((p) => claimed.add(p.id));
+    return ranked;
+  }
 
-  ranked.forEach((p) => claimed.add(p.id));
-  return ranked;
-}
+  const services: {
+    n: string;
+    name: string;
+    line: string;
+    renders: Project[];
+  }[] = [
+    {
+      n: "01",
+      name: "Architecture",
+      line: "Concept to completion, across residential, commercial and civic.",
+      renders: pick(["Residential High-Rise", "Mixed-Use"], 2),
+    },
+    {
+      n: "02",
+      name: "Interior Design",
+      line: "Interiors that finish the architecture, not decorate it.",
+      renders: pick(["Interiors"], 2),
+    },
+    {
+      n: "03",
+      name: "Real Estate Development",
+      line: "We originate, design and de-risk the projects we believe in.",
+      renders: pick(["Multi-Residential"], 2),
+    },
+    {
+      n: "04",
+      name: "Construction & Project Delivery",
+      line: "Drawings become buildings, on the ground, in Lagos conditions.",
+      renders: pick(["Commercial & Civic"], 2),
+    },
+    {
+      n: "05",
+      name: "Master Planning",
+      line: "Estates and mixed-use districts planned to grow well.",
+      renders: pick(["Mixed-Use", "Recreational"], 2),
+    },
+  ];
 
-const services: {
-  n: string;
-  name: string;
-  line: string;
-  renders: Project[];
-}[] = [
-  {
-    n: "01",
-    name: "Architecture",
-    line: "Concept to completion, across residential, commercial and civic.",
-    renders: pick(["Residential High-Rise", "Mixed-Use"], 2),
-  },
-  {
-    n: "02",
-    name: "Interior Design",
-    line: "Interiors that finish the architecture, not decorate it.",
-    renders: pick(["Interiors"], 2),
-  },
-  {
-    n: "03",
-    name: "Real Estate Development",
-    line: "We originate, design and de-risk the projects we believe in.",
-    renders: pick(["Multi-Residential"], 2),
-  },
-  {
-    n: "04",
-    name: "Construction & Project Delivery",
-    line: "Drawings become buildings, on the ground, in Lagos conditions.",
-    renders: pick(["Commercial & Civic"], 2),
-  },
-  {
-    n: "05",
-    name: "Master Planning",
-    line: "Estates and mixed-use districts planned to grow well.",
-    renders: pick(["Mixed-Use", "Recreational"], 2),
-  },
-];
-
-export default function ServicesPage() {
   return (
     <>
       <section
@@ -181,14 +169,16 @@ export default function ServicesPage() {
                                 : "16 / 10",
                           }}
                         >
-                          <Image
-                            src={`/library/${p.images[0]}`}
-                            alt={`${p.title}, ${p.location}`}
-                            fill
-                            sizes="(min-width: 700px) 30vw, 45vw"
-                            loading={i === 0 ? "eager" : "lazy"}
-                            style={{ objectFit: "cover" }}
-                          />
+                          {p.images[0] ? (
+                            <Image
+                              src={resolveImage(p.images[0])}
+                              alt={`${p.title}, ${p.location}`}
+                              fill
+                              sizes="(min-width: 700px) 30vw, 45vw"
+                              loading={i === 0 ? "eager" : "lazy"}
+                              style={{ objectFit: "cover" }}
+                            />
+                          ) : null}
                         </ClipReveal>
                         <div
                           className="mt-3 text-meta"

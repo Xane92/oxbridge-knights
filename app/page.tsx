@@ -1,36 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import manifest from "@/data/manifest.json";
+import { getProjects } from "@/lib/projects";
 import SelectedWorks from "./components/SelectedWorks";
 import Asterisk from "./components/Asterisk";
-
-type Project = {
-  id: string;
-  title: string;
-  type: string;
-  category: string;
-  location: string;
-  date: string;
-  year: number;
-  legacy: boolean;
-  tier: "hero" | "gallery";
-  images: string[];
-};
-
-const projects = manifest as Project[];
 
 // Curated, hand-ordered: no two adjacent cards share a category, and the
 // sharpest exterior renders lead. Order matters — do not sort.
 const worksOrder = ["p03", "p14", "p50", "p20", "p17", "p11", "p23", "p52"];
-
-// The end panel counts the modern book only, matching /projects.
-const modernCount = projects.filter((p) => !p.legacy).length;
-
-const heroPicks: Project[] = worksOrder.map((id) => {
-  const project = projects.find((p) => p.id === id);
-  if (!project) throw new Error(`Selected Works: no manifest entry for "${id}"`);
-  return project;
-});
 
 const services: { n: string; name: string; line: string }[] = [
   {
@@ -70,7 +46,18 @@ const marqueeItems = [
   "London",
 ];
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getProjects();
+
+  // The end panel counts the modern book only, matching /projects.
+  const modernCount = projects.filter((p) => !p.legacy).length;
+
+  const heroPicks = worksOrder.map((id) => {
+    const project = projects.find((p) => p.id === id);
+    if (!project) throw new Error(`Selected Works: no project for "${id}"`);
+    return project;
+  });
+
   return (
     <>
       <Hero />
